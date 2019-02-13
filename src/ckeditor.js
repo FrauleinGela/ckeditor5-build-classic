@@ -27,6 +27,7 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import '../css/highlight.css';
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -52,7 +53,8 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	Highlight
+	Highlight,
+	Alignment
 ];
 
 // Editor configuration.
@@ -70,6 +72,7 @@ ClassicEditor.defaultConfig = {
 			'blockQuote',
 			'insertTable',
 			'highlight',
+			'alignment',
 			'undo',
 			'redo'
 		]
