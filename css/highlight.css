@@ -1,0 +1,24 @@
+:root {
+	--marker-darkblue : #263542;
+	--marker-indigoblue: #3f51b5;
+}
+
+.marker-darkblue {
+background-color: var(--marker-darkblue);
+color: #FFF;
+}
+
+.marker-indigoblue {
+background-color: var(--marker-indigoblue);
+color: #FFF;
+}
+
+.pen-indigoblue {
+	background-color: #FFF;
+	color: var(--marker-indigoblue);
+}
+
+.pen-darkblue {
+	background-color: #FFF;
+	color: var(--marker-darkblue);
+}

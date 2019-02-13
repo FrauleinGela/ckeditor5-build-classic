@@ -22,12 +22,12 @@ import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
-import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
-
+import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
+import '../css/highlight.css';
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -48,11 +48,11 @@ ClassicEditor.builtinPlugins = [
 	ImageUpload,
 	Link,
 	List,
-	MediaEmbed,
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TableToolbar
+	TableToolbar,
+	Highlight
 ];
 
 // Editor configuration.
@@ -69,9 +69,41 @@ ClassicEditor.defaultConfig = {
 			'imageUpload',
 			'blockQuote',
 			'insertTable',
-			'mediaEmbed',
+			'highlight',
 			'undo',
 			'redo'
+		]
+	},
+	highlight: {
+		options: [
+			{
+				model: 'indigobluePen',
+				class: 'pen-indigoblue',
+				title: 'Indigo pen',
+				color: '#3f51b5',
+				type: 'pen'
+			},
+			{
+				model: 'darkbluePen',
+				class: 'pen-darkblue',
+				title: 'Dark pen',
+				color: '#263542',
+				type: 'pen'
+			},
+			{
+				model: 'indigoblueMarker',
+				class: 'marker-indigoblue',
+				title: 'Indigo marker',
+				color: 'var(--marker-indigoblue)',
+				type: 'marker'
+			},
+			{
+				model: 'darkblueMarker',
+				class: 'marker-darkblue',
+				title: 'Dark marker',
+				color: 'var(--marker-darkblue)',
+				type: 'marker'
+			},
 		]
 	},
 	image: {
