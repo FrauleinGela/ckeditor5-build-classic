@@ -1,8 +1,9 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import agendaIcon from './theme/icons/baseline-view_agenda-24px.svg';
 import { downcastElementToElement } from '@ckeditor/ckeditor5-engine/src/conversion/downcast-converters';
+import { upcastElementToElement } from '@ckeditor/ckeditor5-engine/src/conversion/upcast-converters';
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
+import agendaIcon from './theme/icons/baseline-view_agenda-24px.svg';
 
 export default class HeaderContentUI extends Plugin {
 
@@ -17,8 +18,7 @@ export default class HeaderContentUI extends Plugin {
         isObject: true,
         isBlock: true,
       });
-
-      // converters for writing from model to writer
+      // Create element as a widget
       editor.conversion.for('editingDowncast').add(
         downcastElementToElement({
           model: item.tag,
@@ -28,7 +28,21 @@ export default class HeaderContentUI extends Plugin {
           }
         })
       );
+      // converters for writing from writer to model
+      editor.conversion.for('dataDowncast').add(
+        downcastElementToElement({
+          model: item.tag,
+          view: item.tag
+        })
+      );
 
+      // converters for writing from model to writer
+      editor.conversion.for('upcast').add(
+        upcastElementToElement({
+          view: item.tag,
+          model: item.tag
+        })
+      );
     });
 
     this.createToolbarButton(editor);
