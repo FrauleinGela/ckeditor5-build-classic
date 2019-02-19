@@ -53,11 +53,9 @@ export default class HeaderContentCommand extends Command {
   /**
    * Add elements to writer using a document fragment to be able to add more than one tag at once
    */
-  _addElementToWriter(writer, element, docFrag, lastItem) {
-    addEmptyParagraph(writer, docFrag);
+  _addElementToWriter(writer, element, docFrag) {
     // add element to document fragment
     writer.append(element, docFrag);
-    if (lastItem) { addEmptyParagraph(writer, docFrag); }
   }
 
   /**
@@ -71,12 +69,8 @@ export default class HeaderContentCommand extends Command {
       const elementsCreated = this._createElements(writer, this.tagsItems);
       const docFrag = writer.createDocumentFragment();
       const insertAtSelection = findOptimalInsertionPosition(model.document.selection, model);
-      elementsCreated.map((element, index) => {
-        let lastItem = false;
-        if (index === elementsCreated.length - 1) {
-          lastItem = true;
-        }
-        this._addElementToWriter(writer, element, docFrag, lastItem);
+      elementsCreated.map((element) => {
+        this._addElementToWriter(writer, element, docFrag);
       });
       model.insertContent(docFrag, insertAtSelection);
     });
@@ -90,6 +84,8 @@ function findHeaderContent(element) {
   return element.parent.name == 'headerContent' ? element.parent : null;
 }
 
+// TODO: Create a break line
+// couldnt create a tag with class, unless i have to create one more widget
 // if break line is needed within elements
 function addEmptyParagraph(writer, docFrag) {
   const p1 = writer.createElement('paragraph');
