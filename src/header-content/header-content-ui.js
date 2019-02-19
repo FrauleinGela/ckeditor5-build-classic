@@ -18,6 +18,11 @@ export default class HeaderContentUI extends Plugin {
         isObject: true,
         isBlock: true,
       });
+
+      editor.model.schema.extend('$text', {
+        allowIn: item.tag
+      });
+
       // Create element as a widget
       editor.conversion.for('editingDowncast').add(
         downcastElementToElement({
