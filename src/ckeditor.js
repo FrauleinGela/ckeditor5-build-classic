@@ -128,6 +128,25 @@ ClassicEditor.defaultConfig = {
 			{ tag: 'content-collapse', tagText: '[content-collapse]' }
 		]
 	},
+	heading: {
+		options: [
+			{ model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+			{
+				model: 'titleparagraph',
+				view: {
+					name: 'p',
+					classes: 'header-title'
+				},
+				title: 'Title paragraph',
+				class: 'ck-heading_titleparagraph',
+
+				// It needs to be converted before the standard 'p'.
+				converterPriority: 'high'
+			},
+			{ model: 'heading1', view: 'h2', title: 'Heading 1', class: 'ck-heading_heading1' },
+			{ model: 'heading2', view: 'h3', title: 'Heading 2', class: 'ck-heading_heading2' }
+		]
+	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
 };
